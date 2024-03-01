@@ -111,7 +111,7 @@ int main(){
         temp[1] = it[2];
         adj[it[1]].push_back(temp);
     }
-    krushkal(adj, n);
+    krushkal(adj,n);
     
     return 0;
 }
