@@ -28,29 +28,6 @@ vector<int> dijkstraPriorityQueue(vector<vector<int> > adj[], int n, int src){
     return dist;
 }
 
-vector<int> dijkstraSet(vector<vector<int> > adj[], int src, int n){
-    set<pair<int, int> > s;
-    vector<int> dist(n, INT_MAX);
-    dist[src] = 0;
-    s.insert(make_pair(0, src));
-    while (!s.empty()){
-        auto minPair = *min_element(s.begin(), s.end());
-        int node = minPair.second;
-        int dis = minPair.first;
-        s.erase(minPair);
-        for (auto it : adj[node]){
-            int adjNode = it[0];
-            int edgeWeight = it[1];
-            if (dis + edgeWeight < dist[adjNode]){
-                if (dist[adjNode] != INT_MAX) s.erase(make_pair(dist[adjNode], adjNode));
-                dist[adjNode] = dis + edgeWeight;
-                s.insert(make_pair(dist[adjNode], adjNode));
-            }
-        }
-    }
-    return dist;
-}
-
 int main(){
     int n, m;
     cin >> n >> m;
